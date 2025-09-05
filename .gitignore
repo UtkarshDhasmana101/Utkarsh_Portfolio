@@ -1,0 +1,37 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# editor/IDE files
+.vscode/
+.idea/
+*.swp
+
+# Tailwind cache (optional)
+.tailwindcache/
+
+# OS-specific
+Thumbs.db
+
+# three.js models, textures, or assets cache (if generated at runtime)
+/public/models/tmp/
+/public/textures/tmp/
