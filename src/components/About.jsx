@@ -1,5 +1,5 @@
 import React from "react";
-import { Tilt } from "react-tilt";
+import {Tilt} from "react-tilt";
 import { motion } from "framer-motion";
 
 import { styles } from "../styles";
@@ -11,7 +11,7 @@ const ServiceCard = ({ index, title, icon }) => (
   <Tilt className='xs:w-[250px] w-full'>
     <motion.div
       variants={fadeIn("right", "spring", index * 0.5, 0.75)}
-      className='w-full green-pink-gradient p-[1px] rounded-[60px] shadow-card'
+      className='w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card'
     >
       <div
         options={{
@@ -19,7 +19,7 @@ const ServiceCard = ({ index, title, icon }) => (
           scale: 1,
           speed: 450,
         }}
-        className='bg-tertiary rounded-[40px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col'
+        className='bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col'
       >
         <img
           src={icon}
@@ -38,13 +38,11 @@ const ServiceCard = ({ index, title, icon }) => (
 const About = () => {
   return (
     <>
-      {/* Wrap headings in a div that centers text */}
       <motion.div
         variants={textVariant(0)}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.25 }}
-        className="text-center"  /* added: centers the Introduction / Overview text */
       >
         <p className={styles.sectionSubText}>Introduction</p>
         <h2 className={styles.sectionHeadText}>Overview.</h2>
@@ -55,7 +53,7 @@ const About = () => {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.25 }}
-        className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px] mx-auto text-center"  /* added mx-auto + text-center */
+        className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
       >
         I’m a skilled software developer seamlessly bridging app development,
         Unity-powered games, web experiences, and XR projects that go beyond
@@ -65,8 +63,7 @@ const About = () => {
         optimizing user flows, I bring clarity, craftsmanship, and speed to
         everything I do. Let’s build something sharp, polished, and meaningful.
       </motion.p>
-
-      <div className='mt-20 flex flex-wrap gap-10'>
+       <div className='mt-20 flex flex-wrap gap-10'>
         {services.map((service, index) => (
           <ServiceCard key={service.title} index={index} {...service} />
         ))}
@@ -75,4 +72,4 @@ const About = () => {
   );
 };
 
-export default SectionWrapper(About, "about");
+export default SectionWrapper(About,"about");

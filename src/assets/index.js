@@ -21,21 +21,6 @@ import redux from "./tech/redux.png";
 import tailwind from "./tech/tailwind.png";
 import typescript from "./tech/typescript.png";
 import threejs from "./tech/threejs.svg";
-import cpp from "./tech/cpp.png";
-import c from "./tech/c.png";
-import csharp from "./tech/csharp.png";
-import python from "./tech/python.png";
-import java from "./tech/java.png";
-import unity from "./tech/unity.png";
-import sql from "./tech/sql.png";
-import firebase from "./tech/firebase.png";
-
-
-
-
-
-
-
 
 import meta from "./company/meta.png";
 import shopify from "./company/shopify.png";
@@ -80,12 +65,4 @@ export {
   carrent,
   jobit,
   tripguide,
-  c,
-  cpp,
-  csharp,
-  python,
-  java,
-  unity,
-  sql,
-  firebase
 };

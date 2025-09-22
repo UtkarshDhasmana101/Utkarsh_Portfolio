@@ -22,16 +22,8 @@ import {
   carrent,
   argenie,
   jobit,
-  c,
-  cpp,
-  csharp,
-  python,
   tripguide,
   threejs,
-  java,
-  unity,
-  sql,
-  firebase
 } from "../assets";
 
 export const navLinks = [
@@ -70,30 +62,6 @@ const services = [
 
 const technologies = [
   {
-    name: "C",
-    icon: c,
-  },
-  {
-    name: "C++",
-    icon: cpp,
-  },
-  {
-    name: "C#",
-    icon: csharp,
-  },
-  {
-    name: "Python",
-    icon: python,
-  },
-  {
-    name: "Java",
-    icon: java,
-  },
-  {
-    name: "Unity",
-    icon: unity,
-  },
-  {
     name: "HTML 5",
     icon: html,
   },
@@ -106,24 +74,44 @@ const technologies = [
     icon: javascript,
   },
   {
+    name: "TypeScript",
+    icon: typescript,
+  },
+  {
+    name: "React JS",
+    icon: reactjs,
+  },
+  {
+    name: "Redux Toolkit",
+    icon: redux,
+  },
+  {
     name: "Tailwind CSS",
     icon: tailwind,
+  },
+  {
+    name: "Node JS",
+    icon: nodejs,
   },
   {
     name: "MongoDB",
     icon: mongodb,
   },
   {
-    name: "SQL",
-    icon: sql,
+    name: "Three JS",
+    icon: threejs,
   },
   {
-    name: "Firebase",
-    icon: firebase,
-  },
-  {
-    name: "Git",
+    name: "git",
     icon: git,
+  },
+  {
+    name: "figma",
+    icon: figma,
+  },
+  {
+    name: "docker",
+    icon: docker,
   },
 ];
 
@@ -147,12 +135,11 @@ const experiences = [
     iconBg: "#E6DEDD",
     date: "February 2025 - July 2025",
     points: [
-  "Selected among 1,600+ students for PwC’s Data Analytics and AI Launchpad Program 2025.",
-  "Completed certification in IT Fundamentals, RDBMS, and Object-Oriented Programming in Python.",
-  "Gained hands-on experience in Data Analytics and Artificial Intelligence through structured training and projects.",
-  "Strengthened problem-solving and analytical skills by applying Python, databases, and AI concepts to real-world scenarios."
-],
-
+      "Developing and maintaining web applications using React.js and other related technologies.",
+      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
+      "Implementing responsive design and ensuring cross-browser compatibility.",
+      "Participating in code reviews and providing constructive feedback to other developers.",
+    ],
   }
 ];
 
@@ -185,67 +172,67 @@ const testimonials = [
 
 const projects = [
   {
-    name: "Poultry Care",
+    name: "Car Rent",
     description:
-      "An Augmented Reality app using Unity for AI-based poultry disease diagnosis and treatment, combining Random Forest symptom prediction, CNN image classification, real-time interactive overlays, optimized memory via Unity Addressables, and cloud storage/sync with Firebase to reduce app size.",
+      "Web-based platform that allows users to search, book, and manage car rentals from various providers, providing a convenient and efficient solution for transportation needs.",
     tags: [
       {
-        name: "unity",
+        name: "react",
         color: "blue-text-gradient",
       },
       {
-        name: "firebase",
+        name: "mongodb",
         color: "green-text-gradient",
       },
       {
-        name: "python",
+        name: "tailwind",
         color: "pink-text-gradient",
       },
     ],
     image: carrent,
-    source_code_link: "https://github.com/UtkarshDhasmana101/Poultry-cARe",
+    source_code_link: "https://github.com/",
   },
   {
-    name: "Blades of Midnight",
+    name: "Job IT",
     description:
-    "Blades of Midnight is a first-person gothic 3D hack-and-slash game with multi-terrain environments, featuring dynamic sword-slashing via precise mouse control, immersive visuals through custom shaders and VFX, and optimized performance using low-poly models, batching, and object pooling.",
+      "Web application that enables users to search for job openings, view estimated salary ranges for positions, and locate available jobs based on their current location.",
     tags: [
       {
-        name: "unity",
+        name: "react",
         color: "blue-text-gradient",
       },
       {
-        name: "blender",
+        name: "restapi",
         color: "green-text-gradient",
       },
       {
-        name: "firebase",
+        name: "scss",
         color: "pink-text-gradient",
       },
     ],
     image: jobit,
-    source_code_link: "https://github.com/UtkarshDhasmana101?tab=repositories",
+    source_code_link: "https://github.com/",
   },
   {
-    name: "Intellitrace",
+    name: "Trip Guide",
     description:
-      "A desktop app for 3D crime scene reconstruction & AI analysis, enabling visualization, tagging, and probabilistic modeling of suspects, victims, evidence, timelines, plus contradiction detection (via RoBERTa), anomaly detection for spatio-temporal data, and scoring to uncover inconsistencies.",
+      "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
     tags: [
       {
-        name: "unity",
+        name: "nextjs",
         color: "blue-text-gradient",
       },
       {
-        name: "firebase",
+        name: "supabase",
         color: "green-text-gradient",
       },
       {
-        name: "machine-learning",
+        name: "css",
         color: "pink-text-gradient",
       },
     ],
     image: tripguide,
-    source_code_link: "https://github.com/UtkarshDhasmana101?tab=repositories",
+    source_code_link: "https://github.com/",
   },
 ];
 
