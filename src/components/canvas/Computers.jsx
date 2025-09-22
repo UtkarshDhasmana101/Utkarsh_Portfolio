@@ -24,7 +24,9 @@ const Computers = ({ isMobile }) => {
     const light = pointLightRef.current;
     if (!light) return;
 
-
+    // linear interpolation toward target
+    // new = current + (target - current) * (1 - exp(-k * delta))
+    // simplified to lerp(current, target, t) where t = 1 - exp(-SPEED * delta)
     const t = 1 - Math.exp(-SPEED * delta);
     light.intensity += (targetIntensity.current - light.intensity) * t;
 
