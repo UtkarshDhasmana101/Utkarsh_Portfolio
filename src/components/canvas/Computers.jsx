@@ -68,8 +68,8 @@ const Computers = ({ isMobile }) => {
 
       <primitive
         object={computer.scene}
-        scale={isMobile ? 1.5 : 2.5}
-        position={isMobile ? [-0.4, -3, -2.2] : [0, -4.1, 0.2]}
+        scale={isMobile ? 1.8 : 2.5}
+        position={isMobile ? [-0.7, -3.5, -0.11] : [0, -4.1, 0.2]}
         rotation={[-0.01, -11.4, 0]}
         // Use pointer down for snappy interaction; onClick also works
         onPointerDown={(e) => {
