@@ -1,55 +1,96 @@
-import {Suspense, useEffect, useState} from 'react';
-import {Canvas} from '@react-three/fiber'
+import { Suspense, useEffect, useState, useRef } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Preload, useGLTF } from '@react-three/drei';
 
 import CanvasLoader from '../Loader';
 
-const Computers = ({isMobile}) => {
+const Computers = ({ isMobile }) => {
+  const computer = useGLTF('./desktop_pc/dh.glb');
 
-  const computer= useGLTF('./desktop_pc/scene.gltf');
+  // Whether light should be "on" logically
+  const [isOn, setIsOn] = useState(false);
+
+  // Ref to the point light so we can animate its intensity
+  const pointLightRef = useRef();
+
+  // target intensity (0 off, 100 on)
+  const targetIntensity = useRef(0);
+
+  // speed of the animation (larger => faster)
+  const SPEED = 3.0;
+
+  // useFrame runs every animation frame; lerp current intensity toward target
+  useFrame((state, delta) => {
+    const light = pointLightRef.current;
+    if (!light) return;
+
+
+    const t = 1 - Math.exp(-SPEED * delta);
+    light.intensity += (targetIntensity.current - light.intensity) * t;
+
+    // optional: small pulsing on top of main intensity when fully on
+    if (Math.abs(light.intensity - targetIntensity.current) < 0.001) {
+      light.intensity = targetIntensity.current;
+    }
+  });
+
+  // toggle handler
+  const handleToggle = () => {
+    const next = !isOn;
+    setIsOn(next);
+    targetIntensity.current = next ? 300 : 0;
+  };
+
   return (
     <mesh>
-      <hemisphereLight intensity={1.15} groundColor='black' />
+      <hemisphereLight intensity={2.15} groundColor="black" />
       <spotLight
         position={[-20, 50, 10]}
-        angle={0.12}
+        angle={0.2}
         penumbra={1}
         intensity={1}
         castShadow
         shadow-mapSize={1024}
       />
-      <pointLight intensity={10} />
+
+      {/* Animated Point Light (starts at intensity 0) */}
+      <pointLight
+        ref={pointLightRef}
+        position={[0, 2, 2]} // adjust as needed
+        intensity={0}
+        distance={50} // controls falloff distance
+        decay={2} // physically-based decay
+        color="white"
+        castShadow
+      />
+
       <primitive
         object={computer.scene}
-        scale={isMobile ? 0.6 : 0.75}
-        position={isMobile ? [-0.4, -3, -2.2] : [0, -3.25, -1.5]}
-        rotation={[-0.01, -0.2, -0.1]}
+        scale={isMobile ? 1.5 : 2.5}
+        position={isMobile ? [-0.4, -3, -2.2] : [0, -4.1, 0.2]}
+        rotation={[-0.01, -11.4, 0]}
+        // Use pointer down for snappy interaction; onClick also works
+        onPointerDown={(e) => {
+          e.stopPropagation();
+          handleToggle();
+        }}
       />
     </mesh>
   );
 };
+
 const ComputersCanvas = () => {
-  
-   const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    // Add a listener for changes to the screen size
-    const mediaQuery = window.matchMedia("(max-width: 500px)");
-
-    // Set the initial value of the `isMobile` state variable
+    const mediaQuery = window.matchMedia('(max-width: 500px)');
     setIsMobile(mediaQuery.matches);
-
-    // Define a callback function to handle changes to the media query
     const handleMediaQueryChange = (event) => {
       setIsMobile(event.matches);
     };
-
-    // Add the callback function as a listener for changes to the media query
-    mediaQuery.addEventListener("change", handleMediaQueryChange);
-
-    // Remove the listener when the component is unmounted
+    mediaQuery.addEventListener('change', handleMediaQueryChange);
     return () => {
-      mediaQuery.removeEventListener("change", handleMediaQueryChange);
+      mediaQuery.removeEventListener('change', handleMediaQueryChange);
     };
   }, []);
 
@@ -61,11 +102,7 @@ const ComputersCanvas = () => {
       gl={{ preserveDrawingBuffer: true }}
     >
       <Suspense fallback={<CanvasLoader />}>
-        <OrbitControls
-          enableZoom={false}
-          maxPolarAngle={Math.PI / 2}
-          minPolarAngle={Math.PI / 2}
-        />
+        <OrbitControls enableZoom={false} maxPolarAngle={Math.PI / 2} minPolarAngle={Math.PI / 2} />
         <Computers isMobile={isMobile} />
       </Suspense>
       <Preload all />
@@ -73,4 +110,4 @@ const ComputersCanvas = () => {
   );
 };
 
-export default ComputersCanvas
+export default ComputersCanvas;
